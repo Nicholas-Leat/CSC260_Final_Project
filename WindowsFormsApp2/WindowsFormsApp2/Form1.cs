@@ -19,10 +19,15 @@ namespace WindowsFormsApp2
 
         private void SubmitPayRoll_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmployeeName_TextChanged(object sender, EventArgs e)
         {
 
         }

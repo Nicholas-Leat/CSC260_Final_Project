@@ -54,6 +54,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.PTOUsed = new System.Windows.Forms.TextBox();
             this.PTOEarned = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // SubmitPayRoll
@@ -132,7 +133,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1649, 76);
+            this.label8.Location = new System.Drawing.Point(1644, 91);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(194, 32);
             this.label8.TabIndex = 8;
@@ -144,6 +145,7 @@
             this.EmployeeName.Name = "EmployeeName";
             this.EmployeeName.Size = new System.Drawing.Size(300, 38);
             this.EmployeeName.TabIndex = 9;
+            this.EmployeeName.TextChanged += new System.EventHandler(this.EmployeeName_TextChanged);
             // 
             // PayType
             // 
@@ -252,11 +254,21 @@
             this.PTOEarned.TabIndex = 23;
             this.PTOEarned.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 31;
+            this.listBox1.Location = new System.Drawing.Point(1483, 148);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(462, 717);
+            this.listBox1.TabIndex = 24;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1957, 1030);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.PTOEarned);
             this.Controls.Add(this.PTOUsed);
             this.Controls.Add(this.label11);
@@ -282,7 +294,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SubmitPayRoll);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Pay Roll";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,6 +327,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox PTOUsed;
         private System.Windows.Forms.TextBox PTOEarned;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
