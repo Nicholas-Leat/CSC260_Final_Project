@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,6 +46,10 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -129,21 +134,21 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(355, 628);
+            this.textBox3.Location = new System.Drawing.Point(355, 218);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(592, 38);
             this.textBox3.TabIndex = 10;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(355, 554);
+            this.textBox4.Location = new System.Drawing.Point(355, 278);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(592, 38);
             this.textBox4.TabIndex = 11;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(355, 491);
+            this.textBox5.Location = new System.Drawing.Point(355, 349);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(592, 38);
             this.textBox5.TabIndex = 12;
@@ -157,21 +162,21 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(355, 349);
+            this.textBox7.Location = new System.Drawing.Point(355, 491);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(592, 38);
             this.textBox7.TabIndex = 14;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(355, 278);
+            this.textBox8.Location = new System.Drawing.Point(355, 554);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(592, 38);
             this.textBox8.TabIndex = 15;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(355, 209);
+            this.textBox9.Location = new System.Drawing.Point(355, 631);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(592, 38);
             this.textBox9.TabIndex = 16;
@@ -185,11 +190,44 @@
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(923, 818);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(167, 86);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Add Employee";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1234, 818);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(167, 86);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Remove Employee";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1354, 47);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(750, 225);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2220, 1155);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.textBox8);
@@ -209,6 +247,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form2";
             this.Text = "Form2";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +272,8 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
