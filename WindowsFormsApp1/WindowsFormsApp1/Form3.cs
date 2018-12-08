@@ -34,32 +34,56 @@ namespace WindowsFormsApp1
          
 
             var employee = new Employee();
+            var employee_pay = new pay();
+            var employee_PTO = new benifits();
+            var employee_hours = new Hours();
 
+
+            try
+            {
+                rate = Double.Parse(PayRate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Must Enter Valid Pay Rate!");
+                pass = false;
+            }
             if (!string.IsNullOrEmpty(name))
             {
                 employee.set_name(name);
+                employee_pay.set_pay_rate(rate);
+                employee_PTO.set_PTO_rate(pto_rate);
             }
             else
             {
                 MessageBox.Show("Employee Name is Required!");
                 pass = false;
             }
-            try
-            {
-                rate = Double.Parse(PayRate);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Must Enter Valid Pay Rate!");
-                pass = false;
-            }
-         
+                  
             if(pto_rate == -1)
             {
                 MessageBox.Show("Must Enter Valid PTO Rate");
                 pass = false;
             }
+            bool g = false;
 
+            while (g == false)
+            {
+                int random_ID;
+                Random rnd = new Random();
+                random_ID = rnd.Next(1000, 9999);
+
+                String conn = ConfigurationManager.ConnectionStrings["Con1"].ConnectionString;
+                SqlConnection con = new SqlConnection(conn);
+                SqlDataAdapter sqa = new SqlDataAdapter("Select count (*) From Employees where ID = '" + random_ID + "'", con);
+                DataTable dt = new DataTable();
+                sqa.Fill(dt);
+                if (dt.Rows[0][0].ToString() == "0")
+                {
+                    employee.set_id(random_ID);
+                    g = true;
+                }
+            }
 
 
 
@@ -69,11 +93,11 @@ namespace WindowsFormsApp1
             if (pass)
             {
                 //SqlDataAdapter sqa = new SqlDataAdapter("Insert into Employees (Name, PayRate, PTORate) Values ('" +name +"', "+ rate +", " +pto_rate +")", con);
-                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Con1"].ConnectionString))
-                using (SqlCommand cmd = new SqlCommand("insert into Employees (Name, PayRate, PTORate) values ('" + name + "', " + rate + ", " + pto_rate + "); SELECT SCOPE_IDENTITY(); ", con))
+                using (SqlConnection cons = new SqlConnection(ConfigurationManager.ConnectionStrings["Con1"].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("insert into Employees (Name, PayRate, PTORate, ID) values ('" + employee.get_name() + "', " + employee_pay.get_pay_rate() + ", " + employee_PTO.get_pto_rate() + ", " +employee.get_ID()+"); SELECT SCOPE_IDENTITY(); ", cons))
 
                 {
-                    con.Open();
+                    cons.Open();
                     // cmd.Parameters.AddWithValue("@username", txtusername.Text.Trim());
                     //cmd.Parameters.AddWithValue("@password", txtpassword.Text.Trim());
                     //cmd.Parameters.AddWithValue("@email", txtemail.Text.Trim());

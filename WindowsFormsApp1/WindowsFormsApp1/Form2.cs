@@ -82,6 +82,51 @@ namespace WindowsFormsApp1
             
             MessageBox.Show(listView1.SelectedItems[0].SubItems[1].Text);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            var employee = new Employee();
+            var employee_pay = new pay();
+            var employee_PTO = new benifits();
+            var employee_hours = new Hours();
+        }
+
+        private void ID_BOX_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void YTD_Hours_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int IDs = 0;
+            string id = ID_BOX.Text.ToString();
+            int.TryParse(id, out IDs);
+
+            String conn = ConfigurationManager.ConnectionStrings["Con1"].ConnectionString;
+            SqlConnection con = new SqlConnection(conn);
+            SqlDataAdapter sqa = new SqlDataAdapter("Select count (*) From Employees where ID = "+IDs+" ", con);
+            DataTable dt = new DataTable();
+            sqa.Fill(dt);
+
+
+            con.Open();
+            if(dt.Rows[0][0].ToString() == "1")
+            {
+                MessageBox.Show("Button Works");
+               // Employee_Name.Text.Insert(1,);
+            }
+        }
     }
 
 
@@ -93,9 +138,23 @@ namespace WindowsFormsApp1
     {
         protected string E_name;
         protected int ID;
+        protected int hours_worked;
+        protected int year_hours;
+        protected double YTD_pay;
+        protected int PTO;
+        protected int PTO_rate;
+        protected double pay_rate;
+
+
         public Employee()
         {
-
+            ID = 0;
+            hours_worked = 0;
+            year_hours = 0;
+            YTD_pay = 0;
+            PTO = 0;
+            PTO_rate = 0;
+            pay_rate = 0;
         }
 
         public void set_name(string x)
@@ -106,11 +165,18 @@ namespace WindowsFormsApp1
         {
             ID = z;
         }
+        public string get_name()
+        {
+            return E_name;
+        }
+        public int get_ID()
+        {
+            return ID;
+        }
     }
     public class Hours : Employee
     {
-        protected int hours_worked;
-        protected int year_hours;
+  
 
         public Hours()
         {
@@ -125,21 +191,56 @@ namespace WindowsFormsApp1
     }
     public class pay : Employee
     {
-        protected double YTD_pay;
+        
 
-        protected pay()
+        public pay()
         {
 
+        }
+        public void set_pay_rate(double z)
+        {
+            pay_rate = z;
+        }
+        public double get_pay_rate()
+        {
+            return pay_rate;
+        }
+        public double get_pay()
+        {
+            double x = 0.0;
+            x = hours_worked * pay_rate;
+            return x;
         }
 
     }
     public class benifits : Employee
     {
-        protected double PTO;
 
-        protected benifits()
+        public benifits()
         {
 
+        }
+        public void set_PTO_rate(int x)
+        {
+            PTO_rate = x;
+        }
+        public int get_pto_rate()
+        {
+            return PTO_rate;
+        }
+        public void PTO_inc(int x)
+        {
+            PTO += x;
+
+        }
+        public void PTO_Use(int x)
+        {
+            PTO = PTO - x;
+
+        }
+        public int Get_PTO()
+        {
+            return PTO;
         }
     }
 }
