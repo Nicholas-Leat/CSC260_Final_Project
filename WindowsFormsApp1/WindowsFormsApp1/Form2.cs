@@ -15,9 +15,9 @@ namespace WindowsFormsApp1
     public partial class Form2 : Form
     {
         public Form2()
-        {
-            string x = ""; 
+        { 
             InitializeComponent();
+            listView1.Columns.Add("name", -2, HorizontalAlignment.Left);
             String conn = ConfigurationManager.ConnectionStrings["Con1"].ConnectionString;
             SqlConnection con = new SqlConnection(conn);
             con.Open();
@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
                     ListViewItem lvItem = new ListViewItem();
                     lvItem.SubItems[0].Text = reader["name"].ToString();
                     //lvItem.SubItems[0].Name = reader["ID"].ToString();
-                    lvItem.SubItems.Add(reader["ID"].ToString() + "asdfasdfasdfas");
+                    lvItem.SubItems.Add(reader["ID"].ToString());
                     listView1.Items.Add(lvItem);
                     //listBox2.Items.Add(new ListboxItem(reader["name"], reader["ID"]));
                     //listBox2.DataSource = reader;
@@ -38,6 +38,7 @@ namespace WindowsFormsApp1
                 }
             }
             con.Close();
+            listView1.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -78,11 +79,8 @@ namespace WindowsFormsApp1
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach(var z as listView1.selectedIndices)
-            {
-
-            }
-            MessageBox.Show(listView1.SelectedIndices.ToString());
+            
+            MessageBox.Show(listView1.SelectedItems[0].SubItems[1].Text);
         }
     }
 

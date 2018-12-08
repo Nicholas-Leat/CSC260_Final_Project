@@ -49,8 +49,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ID_BOX = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,32 +224,44 @@
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 31;
-            this.listBox2.Location = new System.Drawing.Point(1609, 366);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(494, 655);
-            this.listBox2.TabIndex = 22;
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
-            // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(1094, 335);
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
+            this.listView1.Location = new System.Drawing.Point(1464, 312);
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(307, 257);
+            this.listView1.Size = new System.Drawing.Size(642, 709);
             this.listView1.TabIndex = 23;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.VirtualListSize = 1;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(86, 66);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 32);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "ID";
+            // 
+            // ID_BOX
+            // 
+            this.ID_BOX.Enabled = false;
+            this.ID_BOX.Location = new System.Drawing.Point(355, 60);
+            this.ID_BOX.Name = "ID_BOX";
+            this.ID_BOX.Size = new System.Drawing.Size(592, 38);
+            this.ID_BOX.TabIndex = 25;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2220, 1155);
+            this.Controls.Add(this.ID_BOX);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -299,7 +312,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox ID_BOX;
     }
 }
