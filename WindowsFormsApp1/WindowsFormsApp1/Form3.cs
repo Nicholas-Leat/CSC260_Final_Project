@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Configuration;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,8 +21,44 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string name = Employee_Add_Name.ToString();
-            Employee employee;
+            //String conn = ConfigurationManager.ConnectionStrings["Con1"].ConnectionString;
+            //SqlConnection con = new SqlConnection(conn);
+
+            bool pass = true;
+            string name = Employee_Add_Name.Text.ToString();
+            string PayRate = Employee_Pay.Text.ToString();
+            double rate = 0;
+            string PTO = Employee_PTO.Text.ToString();
+            int pto_rate = -1;
+            int.TryParse(PTO, out pto_rate);
+         
+
+            var employee = new Employee();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                employee.set_name(name);
+            }
+            else
+            {
+                MessageBox.Show("Employee Name is Required!");
+                pass = false;
+            }
+            try
+            {
+                rate = Double.Parse(PayRate);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Must Enter Valid Pay Rate!");
+                pass = false;
+            }
+         
+            if(pto_rate == -1)
+            {
+                MessageBox.Show("Must Enter Valid PTO Rate");
+                pass = false;
+            }
 
 
 
@@ -28,10 +66,32 @@ namespace WindowsFormsApp1
 
 
 
+            if (pass)
+            {
+                //SqlDataAdapter sqa = new SqlDataAdapter("Insert into Employees (Name, PayRate, PTORate) Values ('" +name +"', "+ rate +", " +pto_rate +")", con);
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Con1"].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("insert into Employees (Name, PayRate, PTORate) values ('" + name + "', " + rate + ", " + pto_rate + "); SELECT SCOPE_IDENTITY(); ", con))
 
-            this.Hide();
-            Form2 form = new Form2();
-            form.Show();
+                {
+                    con.Open();
+                    // cmd.Parameters.AddWithValue("@username", txtusername.Text.Trim());
+                    //cmd.Parameters.AddWithValue("@password", txtpassword.Text.Trim());
+                    //cmd.Parameters.AddWithValue("@email", txtemail.Text.Trim());
+                    //userId = Convert.ToInt32(cmd.ExecuteScalar());
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+
+                    this.Hide();
+                Form2 form = new Form2();
+                form.Show();
+            }
+            
+            }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

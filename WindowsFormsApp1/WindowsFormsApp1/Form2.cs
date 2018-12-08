@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -14,7 +16,28 @@ namespace WindowsFormsApp1
     {
         public Form2()
         {
+            string x = ""; 
             InitializeComponent();
+            String conn = ConfigurationManager.ConnectionStrings["Con1"].ConnectionString;
+            SqlConnection con = new SqlConnection(conn);
+            con.Open();
+            SqlCommand sqa = new SqlCommand("Select name, ID from [Employees] order by name", con);
+            using (SqlDataReader reader = sqa.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    ListViewItem lvItem = new ListViewItem();
+                    lvItem.SubItems[0].Text = reader["name"].ToString();
+                    //lvItem.SubItems[0].Name = reader["ID"].ToString();
+                    lvItem.SubItems.Add(reader["ID"].ToString() + "asdfasdfasdfas");
+                    listView1.Items.Add(lvItem);
+                    //listBox2.Items.Add(new ListboxItem(reader["name"], reader["ID"]));
+                    //listBox2.DataSource = reader;
+                    //listBox2.GetItemText.da
+                  //  Console.WriteLine(String.Format("{0}", reader["name"]));
+                }
+            }
+            con.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -35,6 +58,31 @@ namespace WindowsFormsApp1
             this.Hide();
             RemoveUser user = new RemoveUser();
             user.Show();
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String conn = ConfigurationManager.ConnectionStrings["Con1"].ConnectionString;
+            SqlConnection con = new SqlConnection(conn);
+            con.Open();
+            SqlCommand sqa = new SqlCommand("Select name from [Employees] order by name", con);
+            using (SqlDataReader reader = sqa.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    Console.WriteLine(String.Format("{0}", reader["name"]));
+                }
+            }
+            con.Close();
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach(var z as listView1.selectedIndices)
+            {
+
+            }
+            MessageBox.Show(listView1.SelectedIndices.ToString());
         }
     }
 
