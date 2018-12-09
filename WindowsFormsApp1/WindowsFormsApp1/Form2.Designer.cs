@@ -55,6 +55,7 @@
             this.PTO_Total = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.ID_BOX = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,7 +183,7 @@
             // 
             // Hours_Worked
             // 
-            this.Hours_Worked.Location = new System.Drawing.Point(355, 554);
+            this.Hours_Worked.Location = new System.Drawing.Point(355, 548);
             this.Hours_Worked.Name = "Hours_Worked";
             this.Hours_Worked.Size = new System.Drawing.Size(592, 38);
             this.Hours_Worked.TabIndex = 15;
@@ -240,7 +241,7 @@
             // 
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(1501, 297);
+            this.listView1.Location = new System.Drawing.Point(1508, 299);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(664, 709);
@@ -293,11 +294,22 @@
             this.ID_BOX.Size = new System.Drawing.Size(592, 38);
             this.ID_BOX.TabIndex = 29;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(1017, 496);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(232, 90);
+            this.button5.TabIndex = 30;
+            this.button5.Text = "Calculate Pay";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2220, 1155);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.ID_BOX);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.PTO_Total);
@@ -360,5 +372,6 @@
         private System.Windows.Forms.TextBox PTO_Total;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox ID_BOX;
+        private System.Windows.Forms.Button button5;
     }
 }

@@ -21,8 +21,6 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //String conn = ConfigurationManager.ConnectionStrings["Con1"].ConnectionString;
-            //SqlConnection con = new SqlConnection(conn);
 
             bool pass = true;
             string name = Employee_Add_Name.Text.ToString();
@@ -32,13 +30,11 @@ namespace WindowsFormsApp1
             int pto_rate = -1;
             int.TryParse(PTO, out pto_rate);
          
-
             var employee = new Employee();
-            var employee_pay = new pay();
-            var employee_PTO = new benifits();
-            var employee_hours = new Hours();
-
-
+            var employee_pay = new pay(employee);
+            var employee_PTO = new benifits(employee);
+            var employee_hours = new Hours(employee);
+            
             try
             {
                 rate = Double.Parse(PayRate);
@@ -85,37 +81,33 @@ namespace WindowsFormsApp1
                 }
             }
 
-
-
-
-
-
             if (pass)
             {
-                //SqlDataAdapter sqa = new SqlDataAdapter("Insert into Employees (Name, PayRate, PTORate) Values ('" +name +"', "+ rate +", " +pto_rate +")", con);
                 using (SqlConnection cons = new SqlConnection(ConfigurationManager.ConnectionStrings["Con1"].ConnectionString))
                 using (SqlCommand cmd = new SqlCommand("insert into Employees (Name, PayRate, PTORate, ID) values ('" + employee.get_name() + "', " + employee_pay.get_pay_rate() + ", " + employee_PTO.get_pto_rate() + ", " +employee.get_ID()+"); SELECT SCOPE_IDENTITY(); ", cons))
 
                 {
-                    cons.Open();
-                    // cmd.Parameters.AddWithValue("@username", txtusername.Text.Trim());
-                    //cmd.Parameters.AddWithValue("@password", txtpassword.Text.Trim());
-                    //cmd.Parameters.AddWithValue("@email", txtemail.Text.Trim());
-                    //userId = Convert.ToInt32(cmd.ExecuteScalar());
+                    cons.Open();                 
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }
 
-                    this.Hide();
+                this.Hide();
                 Form2 form = new Form2();
                 form.Show();
             }
-            
             }
-
+        //Not Used
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form2 form = new Form2();
+            form.Show();
         }
     }
 }

@@ -36,16 +36,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.loginDBDataSet = new WindowsFormsApp1.LoginDBDataSet();
             this.tblLoginBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tblLoginTableAdapter = new WindowsFormsApp1.LoginDBDataSetTableAdapters.tblLoginTableAdapter();
             this.tblLoginBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblLoginBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblLoginBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -66,6 +66,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -100,25 +101,6 @@
             this.txtPassword.Size = new System.Drawing.Size(295, 38);
             this.txtPassword.TabIndex = 5;
             // 
-            // loginDBDataSet
-            // 
-            this.loginDBDataSet.DataSetName = "LoginDBDataSet";
-            this.loginDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblLoginBindingSource
-            // 
-            this.tblLoginBindingSource.DataMember = "tblLogin";
-            this.tblLoginBindingSource.DataSource = this.loginDBDataSet;
-            // 
-            // tblLoginTableAdapter
-            // 
-            this.tblLoginTableAdapter.ClearBeforeFill = true;
-            // 
-            // tblLoginBindingSource1
-            // 
-            this.tblLoginBindingSource1.DataMember = "tblLogin";
-            this.tblLoginBindingSource1.DataSource = this.loginDBDataSet;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -138,6 +120,25 @@
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
+            // loginDBDataSet
+            // 
+            this.loginDBDataSet.DataSetName = "LoginDBDataSet";
+            this.loginDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tblLoginBindingSource
+            // 
+            this.tblLoginBindingSource.DataMember = "tblLogin";
+            this.tblLoginBindingSource.DataSource = this.loginDBDataSet;
+            // 
+            // tblLoginTableAdapter
+            // 
+            this.tblLoginTableAdapter.ClearBeforeFill = true;
+            // 
+            // tblLoginBindingSource1
+            // 
+            this.tblLoginBindingSource1.DataMember = "tblLogin";
+            this.tblLoginBindingSource1.DataSource = this.loginDBDataSet;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -154,10 +155,10 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblLoginBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblLoginBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

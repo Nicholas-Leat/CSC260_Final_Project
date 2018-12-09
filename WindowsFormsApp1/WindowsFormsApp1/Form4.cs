@@ -31,7 +31,27 @@ namespace WindowsFormsApp1
             }
             else
             {
-              
+                String conn = ConfigurationManager.ConnectionStrings["Con1"].ConnectionString;
+                SqlConnection con = new SqlConnection(conn);
+                SqlDataAdapter sqa = new SqlDataAdapter("Select count (*) From Employees where ID = '" + x + "'", con);
+                DataTable dt = new DataTable();
+                sqa.Fill(dt);
+
+                if (dt.Rows[0][0].ToString() == "1")
+                {
+                    SqlCommand commands = new SqlCommand("DELETE FROM Employees WHERE ID = " + x + " ", con);
+                    commands.Parameters.AddWithValue("@ID", x);
+                    try
+                    {
+                        con.Open();
+                        commands.ExecuteNonQuery();
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+
+                }
             }
 
 
@@ -41,6 +61,13 @@ namespace WindowsFormsApp1
                 Form2 form = new Form2();
                 form.Show();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form2 form = new Form2();
+            form.Show();
         }
     }
 }

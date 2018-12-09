@@ -23,7 +23,6 @@ namespace WindowsFormsApp1
         {
             // TODO: This line of code loads data into the 'loginDBDataSet.tblLogin' table. You can move, or remove it, as needed.
             this.tblLoginTableAdapter.Fill(this.loginDBDataSet.tblLogin);
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,6 +42,14 @@ namespace WindowsFormsApp1
             else
             {
                 MessageBox.Show("Username/Password is incorrect. Please try again!");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are You Sure You Want To Exit?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Application.Exit();
             }
         }
     }
