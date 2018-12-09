@@ -143,6 +143,10 @@ namespace WindowsFormsApp1
                     PTO_Earned.Text = reader["PTORate"].ToString();
                 }
             }
+            if(string.IsNullOrEmpty(Employee_Name.Text))
+            {
+                MessageBox.Show("Invalid ID!");
+            }
    
         }
 
@@ -153,12 +157,32 @@ namespace WindowsFormsApp1
             var employee_PTO = new benifits(employee);
             var employee_hours = new Hours(employee);
 
+            bool pass = true;
             int z = 0;
             int use_PTO = 0;
             double x = 0;
             double d = 0;
             int PTO_r = 0;
-            if (!string.IsNullOrEmpty(Hours_Worked.Text)) 
+            try
+            {
+                int temp = Convert.ToInt32(Hours_Worked.Text);
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show("Please provide number only");
+                pass = false;
+
+            }
+            try
+            {
+                int temp = Convert.ToInt32(PTO_Used.Text);
+            }
+            catch (Exception h)
+            {
+                MessageBox.Show("Please provide number only");
+                pass = false;
+            }
+            if (!string.IsNullOrEmpty(Hours_Worked.Text) && pass == true) 
             {
                 if(double.TryParse(Hours_Worked.Text, out d))
                 {
